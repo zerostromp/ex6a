@@ -45,13 +45,8 @@
 			}
 			return 1;   		
 		}
-	    $(document).ready(function(){
-			$("button").click(function(){
-			   var t = $('#temp').val();//celsius
-			   var u = $('#unit').val();
-			   
-			   if(vakidate(t) == 0) return;
-			   
+		
+		function calculate(t,u){
 			   var t1;
 			   var u1;
 			   
@@ -64,7 +59,19 @@
 			   }else if(u == "R"){
 					t1 = t * (4/5);
 					u1 = "Kelvin";
-			   }
+			   }	
+			   return {"temp":t1,"unit":u1};	
+		}
+		
+		
+	    $(document).ready(function(){
+			$("button").click(function(){
+			   var t = $('#temp').val();//celsius
+			   var u = $('#unit').val();
+			   
+			   if(validate(t) == 0) return;
+			   
+			   var result = calculate(t,u);
 			   
 			   alert("Temperature is "+t1+" in "+u1);
 			});
